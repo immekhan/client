@@ -1,0 +1,53 @@
+
+<div *ngIf="absDummyForm">
+    <h2><span>Abs Dummy Form </span> {{absDummyForm.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{absDummyForm.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{absDummyForm.lastName}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{absDummyForm.email}}</span>
+        </dd>
+        <dt><span>Image File</span></dt>
+        <dd>
+            <div *ngIf="absDummyForm.imageFile">
+                <a (click)="openFile(absDummyForm.imageFileContentType, absDummyForm.imageFile)">
+                    <img [src]="'data:' + absDummyForm.imageFileContentType + ';base64,' + absDummyForm.imageFile" style="max-width: 100%;" alt="absDummyForm image"/>
+                </a>
+                {{absDummyForm.imageFileContentType}}, {{byteSize(absDummyForm.imageFile)}}
+            </div>
+        </dd>
+        <dt><span>Binary File</span></dt>
+        <dd>
+            <div *ngIf="absDummyForm.binaryFile">
+                <a (click)="openFile(absDummyForm.binaryFileContentType, absDummyForm.binaryFile)">open</a>
+                {{absDummyForm.binaryFileContentType}}, {{byteSize(absDummyForm.binaryFile)}}
+            </div>
+        </dd>
+        <dt><span>Clob Text Field</span></dt>
+        <dd>
+            <span>{{absDummyForm.clobTextField}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'abs-dummy-form-custom/'+ absDummyForm.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

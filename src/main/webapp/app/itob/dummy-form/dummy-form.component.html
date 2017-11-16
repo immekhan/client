@@ -1,0 +1,95 @@
+<div>
+    <h2>
+        <span>Abs Dummy Form</span>
+        <!--<button class="btn btn-primary float-right jh-create-entity create-abs-dummy-form" [routerLink]="['/', { outlets: { popup: ['abs-dummy-form-new-custom'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Abs Dummy Form
+            </span>
+        </button>-->
+        <button type="submit" class="btn btn-primary float-right jh-create-entity create-abs-dummy-form" [routerLink]="['/form-with-validation']">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Abs Dummy Form
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="absDummyForm">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="firstName"><span>First Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastName"><span>Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imageFile"><span>Image File</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="binaryFile"><span>Binary File</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="clobTextField"><span>Clob Text Field</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let absDummyForm of absDummyForm ;trackBy: trackId">
+                <td><a [routerLink]="['../abs-dummy-form-custom', absDummyForm.id ]">{{absDummyForm.id}}</a></td>
+                <td>{{absDummyForm.firstName}}</td>
+                <td>{{absDummyForm.lastName}}</td>
+                <td>{{absDummyForm.email}}</td>
+                <td>
+                    <a *ngIf="absDummyForm.imageFile" (click)="openFile(absDummyForm.imageFileContentType, absDummyForm.imageFile)">
+                        <img [src]="'data:' + absDummyForm.imageFileContentType + ';base64,' + absDummyForm.imageFile" style="max-height: 30px;" alt="absDummyForm image"/>
+                    </a>
+                    <span *ngIf="absDummyForm.imageFile">{{absDummyForm.imageFileContentType}}, {{byteSize(absDummyForm.imageFile)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="absDummyForm.binaryFile" (click)="openFile(absDummyForm.binaryFileContentType, absDummyForm.binaryFile)">open</a>
+                    <span *ngIf="absDummyForm.binaryFile">{{absDummyForm.binaryFileContentType}}, {{byteSize(absDummyForm.binaryFile)}}</span>
+                </td>
+                <td>{{absDummyForm.clobTextField}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../abs-dummy-form-custom', absDummyForm.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                       <!-- <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abs-dummy-form-custom/'+ absDummyForm.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>-->
+                        <button type="submit"
+                                [routerLink]="['/form-with-validation/'+ absDummyForm.id + '/edit']"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abs-dummy-form-custom/'+ absDummyForm.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="absDummyForm && absDummyForm.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

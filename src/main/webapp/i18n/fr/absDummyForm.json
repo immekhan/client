@@ -1,0 +1,25 @@
+{
+    "appApp": {
+        "absDummyForm" : {
+            "home": {
+                "title": "AbsDummyForms",
+                "createLabel": "Créer un nouveau Abs Dummy Form",
+                "createOrEditLabel": "Créer ou éditer un Abs Dummy Form"
+            },
+            "created": "Un nouveau Abs Dummy Form a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Abs Dummy Form avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Abs Dummy Form avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Abs Dummy Form {{ id }} ?"
+            },
+            "detail": {
+                "title": "Abs Dummy Form"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "idImgFileType": "Id Img File Type",
+            "idCsvFileType": "Id Csv File Type"
+        }
+    }
+}

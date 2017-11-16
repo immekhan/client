@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------
+Change Instructions
+--------------------------------------------------------------------------
+
+**********************************************************************
+modified logo and home page start
+**********************************************************************
+***added files***
+-----------------
+front-img.png
+front-img2x.png
+header-logo.png
+header-logo-bkp.png
+
+***modified files***
+---------------------
+home.component.html
+home.scss
+navbar.component.html
+navbar.scss
+home.json
+manifest.webapp
+webpack.dev.js
+Changes.txt
+
+
+**********************************************************************
+Front End Menu display on the base of privileges
+**********************************************************************
+***modified files***
+---------------------
+navbar.component.html
+password.route.ts
+settings.route.ts
+
+
+ _______________________________________________________________________________
+|       ****User Registration  + Detail Screen + orgUnit work****               |
+|_______________________________________________________________________________|
+|            Created Files / Folders            |       Modified Files          |
+|-----------------------------------------------|-------------------------------|
+| abs [Folder]                                  |  global.json                  |
+| user-registration [Folder]                    |  user-registration.json       |
+| user-registration.route.ts                    |  app.module.ts                |
+| user-registration.service.ts                  |  navbar.component.html        |
+| user-registration-details.component.html      |  auth-oauth2.service.ts       |
+| user-registration-details.component.ts        |                               |
+| itob.module.ts                                 |                               |
+| itob.route.ts                                  |                               |
+| index.ts                                      |                               |
+| user-registration.component.ts                |                               |
+| user-registration.component.html              |                               |
+| common.service.ts                             |                               |
+|_______________________________________________|_______________________________|
+
+-----
+Note:|orgUnit work is done in auth-oauth2.service.ts but its hard coded can be converted easily to dynamic by
+----- introduction a field
+
+
+**********************************************************************
+PrimeNG configuration done
+**********************************************************************
+updated files
+-------------
+user-registration.component.html
+user-registration.component.ts
+itob.module.ts
+vendor.scss
+package.json

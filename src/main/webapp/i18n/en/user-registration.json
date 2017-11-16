@@ -1,0 +1,70 @@
+{
+    "userregistration": {
+        "title": "User Registration",
+        "form": {
+            "button": "Register",
+            "email": "Email",
+            "displayName":"Display Name",
+            "firstName":"First Name",
+            "middleName":"Middle Name",
+            "lastName":"Last Name",
+            "activated":"Activated",
+            "registrationType" : "Registration Type",
+            "city": "City",
+            "country": "Country"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Username is required.",
+                    "minlength": "Username is required to be at least 1 character.",
+                    "maxlength": "Username cannot be longer than 80 characters.",
+                    "pattern": "Username can only contain lower-case letters and digits."
+                },"email": {
+                    "required": "Email is required.",
+                    "invalid" : "Email is invalid.",
+                    "minlength": "Username is required to be at least 1 character.",
+                    "maxlength": "Username cannot be longer than 80 characters.",
+                    "pattern": "Username can only contain lower-case letters and digits."
+                },
+                "displayName": {
+                    "required": "Your display name is required.",
+                    "minlength": "Your display name is required to be at least 1 character.",
+                    "maxlength": "Your display name cannot be longer than 50 characters.",
+                    "pattern": "Your display name can only contain lower-case letters and digits."
+                },"firstName": {
+                    "required": "Your first name is required.",
+                    "minlength": "Your first name is required to be at least 1 character.",
+                    "maxlength": "Your first name cannot be longer than 50 characters.",
+                    "pattern": "Your first name can only contain lower-case letters and digits."
+                },"middleName": {
+                    "required": "Your middle name is required.",
+                    "minlength": "Your middle name is required to be at least 1 character.",
+                    "maxlength": "Your middle name cannot be longer than 50 characters.",
+                    "pattern": "Your middle name can only contain lower-case letters and digits."
+                },"lastName": {
+                    "required": "Your last name is required.",
+                    "minlength": "Your last name is required to be at least 1 character.",
+                    "maxlength": "Your last name cannot be longer than 50 characters.",
+                    "pattern": "Your last name can only contain lower-case letters and digits."
+                }
+            },
+            "success": "<strong>Registration saved!</strong>",
+            "successUpdate": "<strong>Edit request successfully processed!</strong>",
+            "error": {
+                "fail": "<strong>Registration failed!</strong> Please try again later.",
+                "userexists": "<strong>Login name already registered!</strong> Please choose another one.",
+                "emailexists": "<strong>Email is already in use!</strong> Please choose another one."
+            },
+            "placeholderVal":{
+                "enterDisplayName":"Enter Display Name",
+                "enterFirstName":"Enter First Name",
+                "enterLastName":"Enter Last Name",
+                "enterMiddleName":"Enter Middle Name"
+            },
+            "titles":{
+
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAbsDummyFormLabel">Create or edit a Abs Dummy Form </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!absDummyForm.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="absDummyForm.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="absDummyForm.firstName" required minlength="0" maxlength="20" pattern="^[a-zA-Z0-9]*$" />
+            <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.minlength">
+                   This field is required to be at least 0 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.maxlength">
+                   This field cannot be longer than 20 characters.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.firstName?.errors?.pattern">
+                    This field should follow pattern for "First Name".
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="absDummyForm.lastName" required minlength="0" maxlength="20" pattern="^[a-zA-Z0-9]*$" />
+            <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.minlength">
+                   This field is required to be at least 0 characters.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.maxlength">
+                   This field cannot be longer than 20 characters.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.lastName?.errors?.pattern">
+                    This field should follow pattern for "Last Name".
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="absDummyForm.email"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_imageFile">Image File</label>
+            <div>
+                <img [src]="'data:' + absDummyForm.imageFileContentType + ';base64,' + absDummyForm.imageFile" style="max-height: 100px;" *ngIf="absDummyForm.imageFile" alt="absDummyForm image"/>
+                <div *ngIf="absDummyForm.imageFile" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{absDummyForm.imageFileContentType}}, {{byteSize(absDummyForm.imageFile)}}</span>
+                    <button type="button" (click)="clearInputImage('imageFile', 'imageFileContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_imageFile" (change)="setFileData($event, absDummyForm, 'imageFile', true)" accept="image/*"/>
+            </div>
+            <input type="hidden" class="form-control" name="imageFile" id="field_imageFile"
+                [(ngModel)]="absDummyForm.imageFile"  />
+            <input type="hidden" class="form-control" name="imageFileContentType" id="field_imageFileContentType"
+                [(ngModel)]="absDummyForm.imageFileContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_binaryFile">Binary File</label>
+            <div>
+                <div *ngIf="absDummyForm.binaryFile" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(absDummyForm.binaryFileContentType, absDummyForm.binaryFile)">open</a><br>
+                    <span class="pull-left">{{absDummyForm.binaryFileContentType}}, {{byteSize(absDummyForm.binaryFile)}}</span>
+                    <button type="button" (click)="absDummyForm.binaryFile=null;absDummyForm.binaryFileContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_binaryFile" (change)="setFileData($event, absDummyForm, 'binaryFile', false)"/>
+            </div>
+            <input type="hidden" class="form-control" name="binaryFile" id="field_binaryFile"
+                [(ngModel)]="absDummyForm.binaryFile"  />
+            <input type="hidden" class="form-control" name="binaryFileContentType" id="field_binaryFileContentType"
+                [(ngModel)]="absDummyForm.binaryFileContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_clobTextField">Clob Text Field</label>
+            <textarea class="form-control" name="clobTextField" id="field_clobTextField"
+                [(ngModel)]="absDummyForm.clobTextField"  ></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
