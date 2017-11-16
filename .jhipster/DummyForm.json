@@ -44,7 +44,7 @@
     "changelogDate": "20171105113023",
     "dto": "mapstruct",
     "service": "serviceImpl",
-    "entityTableName": "abs_dummy_form",
+    "entityTableName": "dummy_form",
     "jpaMetamodelFiltering": false,
     "pagination": "pagination"
 }
